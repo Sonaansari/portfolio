@@ -1,6 +1,3 @@
-// COMPLETE ENHANCED PORTFOLIO - FULL CODE
-
-// app/page.tsx
 "use client";
 
 import Navbar from "./components/Navbar";
