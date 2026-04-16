@@ -185,7 +185,7 @@ export default function Home() {
               <div className="p-6 bg-white/70 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl">
                 <h4 className="text-2xl font-black mb-3 text-rose-600">Expertise</h4>
                 <div className="space-y-2 text-lg">
-                  <div>• Laravel & PHP 8.3</div>
+                  <div>• Laravel & PHP</div>
                   <div>• React & Next.js 15</div>
                   <div>• MySQL & Redis</div>
                 </div>
@@ -193,8 +193,8 @@ export default function Home() {
               <div className="p-6 bg-white/70 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl">
                 <h4 className="text-2xl font-black mb-3 text-emerald-600">Impact</h4>
                 <div className="space-y-2 text-lg">
-                  <div>• 5+ Enterprise Apps</div>
-                  <div>• 75% Faster APIs</div>
+                  <div>• Enterprise Apps</div>
+                  <div>• Faster APIs</div>
                   <div>• 99.9% Uptime</div>
                 </div>
               </div>
