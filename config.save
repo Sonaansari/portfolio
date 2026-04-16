@@ -1,0 +1,12 @@
+Host github-sona
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_github_serve
+
+
+
+
+
+
+
+
