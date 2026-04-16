@@ -9,7 +9,7 @@ export default function Navbar() {
 
   const handleScroll = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-    setOpen(false); // mobile menu auto close
+    setOpen(false); 
   };
 
   const menuItems = ["home", "about", "experience", "skills", "projects", "contact"];

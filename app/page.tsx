@@ -8,6 +8,7 @@ import { useRef, useEffect } from "react";
 
 export default function Home() {
   const heroRef = useRef(null);
+  const aboutRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({ 
@@ -104,100 +105,141 @@ export default function Home() {
           >
             Hi, I'm <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-teal-600 bg-clip-text text-transparent drop-shadow-2xl">Farida Ansari</span>
           </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-2xl md:text-3xl font-medium text-gray-700 max-w-2xl mx-auto mb-12 leading-relaxed"
+          >
+            Crafting scalable web apps with Laravel, React & modern tech stacks
+          </motion.p>
+
+          <motion.a
+            href="#contact"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05, y: -4 }}
+            whileTap={{ scale: 0.98 }}
+            className="group inline-flex items-center gap-3 px-12 py-6 bg-gradient-to-r from-rose-500 via-purple-500 to-emerald-500 text-white font-black text-2xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 backdrop-blur-xl border border-white/30"
+          >
+            View My Work 
+            <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} strokeMiterlimit={10} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </motion.a>
+
+
         </div>
       </section>
 
-      {/* about */}
+    {/* About - Split Screen */}
+      <section ref={aboutRef} id="about" className="py-32 px-6 min-h-screen flex items-center relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-rose-50/50 via-white to-emerald-50/30" />
+        <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative mx-auto w-100 h-100 lg:w-96 lg:h-100"
+          >
+            <div className="w-full h-full rounded-3xl bg-gradient-to-br from-white via-rose-50/50 to-emerald-50 shadow-2xl border-4 border-white/60 backdrop-blur-xl overflow-hidden group hover:scale-105 transition-all duration-700 hover:shadow-3xl">
+              <div className="w-full h-full bg-gradient-to-br from-slate-200 to-white flex items-center justify-center">
+                <div className="text-[8rem] lg:text-[10rem]">👩‍💻</div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-rose-500/20 to-emerald-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            </div>
+            {/* <p className="text-center mt-6 text-xl font-bold text-gray-800">Full Stack Developer</p> */}
+          </motion.div>
 
-      <section id="about" className="py-32 px-6 relative min-h-screen flex items-center">
-  <div className="max-w-5xl mx-auto text-center relative z-20">
+          {/* About Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="space-y-8"
+          >
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent"
+            >
+              About Me
+            </motion.h2>
+            
+            <div className="space-y-6 text-xl text-gray-700 leading-relaxed">
+              <p>
+                Passionate Full Stack Developer with 3+ years experience building scalable web applications. 
+                Specializing in Laravel backend architecture, modern React/Next.js frontends, and production-grade systems.
+              </p>
+              <p>
+                Delivered enterprise SaaS platforms, travel booking systems, HR management tools, and real-time 
+                applications handling 10K+ monthly users with 99.9% uptime.
+              </p>
+            </div>
 
-    <motion.h2
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-5xl md:text-6xl font-black mb-16"
-    >
-      About Me
-    </motion.h2>
+            <div className="grid md:grid-cols-2 gap-6 pt-4">
+              <div className="p-6 bg-white/70 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl">
+                <h4 className="text-2xl font-black mb-3 text-rose-600">Expertise</h4>
+                <div className="space-y-2 text-lg">
+                  <div>• Laravel & PHP 8.3</div>
+                  <div>• React & Next.js 15</div>
+                  <div>• MySQL & Redis</div>
+                </div>
+              </div>
+              <div className="p-6 bg-white/70 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl">
+                <h4 className="text-2xl font-black mb-3 text-emerald-600">Impact</h4>
+                <div className="space-y-2 text-lg">
+                  <div>• 5+ Enterprise Apps</div>
+                  <div>• 75% Faster APIs</div>
+                  <div>• 99.9% Uptime</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-    <p className="text-xl md:text-2xl leading-relaxed text-gray-700 mb-8">
-      I am a passionate Full Stack Laravel Developer focused on building scalable, high-performance web applications.
-      I specialize in backend architecture, API development, and system optimization.
-    </p>
-
-    <p className="text-xl md:text-2xl leading-relaxed text-gray-700 mb-8">
-      My experience includes working on enterprise SaaS platforms, travel systems, HR management tools,
-      and real-time applications handling thousands of users.
-    </p>
-
-    <p className="text-xl md:text-2xl leading-relaxed text-gray-700">
-      I enjoy solving complex technical problems and turning ideas into production-ready systems.
-    </p>
-
-  </div>
-       </section>
-
-      {/* Objective */}
-
-      <section id="objective" className="py-32 px-6 relative min-h-screen flex items-center">
-  <div className="max-w-4xl mx-auto text-center relative z-20">
-
-    <h2 className="text-5xl md:text-6xl font-black mb-12">
-      Career Objective
-    </h2>
-
-    <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-      To work as a Full Stack Developer in a growth-driven organization where I can utilize my expertise
-      in Laravel, backend systems, and scalable architecture to build impactful digital products while
-      continuously learning and improving my technical skills.
-    </p>
-
-  </div>
-</section>
-
-      {/* Experience Section - Optimized */}
-      <section id="experience" className="py-32 px-6 bg-gradient-to-b from-white/95 to-gray-50/90 relative min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-50/30 to-teal-50/30 backdrop-blur-sm" />
-        <div className="relative z-20 max-w-6xl mx-auto">
+      {/* Experience - Timeline Style */}
+      <section id="experience" className="py-32 px-6 bg-gradient-to-b from-white/80 to-slate-50/50 relative min-h-screen">
+        <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-center mb-24 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent drop-shadow-2xl"
+            className="text-5xl lg:text-6xl font-black text-center mb-24 bg-gradient-to-r from-gray-900 to-emerald-700 bg-clip-text text-transparent"
           >
             Professional Experience
           </motion.h2>
 
-          <div className="relative max-w-5xl mx-auto">
+          <div className="relative max-w-4xl mx-auto space-y-12">
             {[
               {
                 role: "PHP Full Stack Developer",
                 company: "TTSIT Umar Tech Systems",
                 time: "March 2025 – Present",
-                desc: "Leading backend development with scalable APIs, enterprise-grade security, and microservices architecture. Implemented Laravel Octane for 10x performance gains.",
-                achievements: ["Architected 5+ enterprise applications", "Reduced API response time by 75%", "Implemented comprehensive CI/CD pipelines"],
-                icon: "🚀",
-                color: "from-pink-500 to-teal-500"
+                desc: "Leading scalable API development & Laravel Octane implementation",
+                achievements: ["5+ enterprise apps", "75% faster APIs", "CI/CD pipelines"],
+                color: "from-rose-500 to-emerald-500"
               },
               {
-                role: "PHP Laravel Developer",
+                role: "PHP Laravel Developer", 
                 company: "Wagnistrip",
                 time: "June 2024 – March 2025",
-                desc: "Built complete travel booking ecosystem with multi-gateway payment integrations, real-time notifications, and advanced search algorithms.",
-                achievements: ["Integrated Stripe, Razorpay & PayPal", "Processed 10K+ transactions/month", "Achieved 99.9% uptime during peak seasons"],
-                icon: "✈️",
-                color: "from-teal-500 to-purple-500"
+                desc: "Travel booking platform with multi-gateway payments",
+                achievements: ["10K+ transactions/month", "99.9% uptime", "Stripe/Razorpay"],
+                color: "from-emerald-500 to-purple-500"
               },
               {
                 role: "PHP Laravel Developer",
-                company: "NDMEAA Technologies",
+                company: "NDMEAA Technologies", 
                 time: "Feb 2023 – June 2024",
-                desc: "Architected modular enterprise applications with optimized databases, 3rd-party API integrations, and advanced authentication systems.",
-                achievements: ["Built HR management system for 5000+ users", "Optimized database queries by 80%", "Implemented real-time dashboard analytics"],
-                icon: "🔧",
-                color: "from-purple-500 to-pink-500"
+                desc: "HR management system for 5000+ users",
+                achievements: ["80% query optimization", "Real-time analytics", "SaaS ready"],
+                color: "from-purple-500 to-rose-500"
               }
             ].map((exp, i) => (
               <motion.div
@@ -205,31 +247,26 @@ export default function Home() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.6 }}
-                whileHover={{ x: 20, scale: 1.02 }}
-                className="group flex gap-6 p-8 mb-16 bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl border border-white/60 transition-all duration-500 relative overflow-hidden hover:-translate-y-2"
+                transition={{ delay: i * 0.2 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group flex items-start gap-8 p-8 bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl border border-white/70 transition-all duration-500 hover:-translate-y-4 relative"
               >
-                <div className={`absolute left-0 w-1.5 h-full bg-gradient-to-b ${exp.color}`} />
-                <motion.div 
-                  className="text-4xl flex-shrink-0 p-3 bg-gradient-to-br from-pink-500/15 to-teal-500/15 rounded-2xl shadow-xl group-hover:scale-110 transition-all duration-300"
-                  whileHover={{ rotate: 180 }}
-                >
-                  {exp.icon}
-                </motion.div>
-                <div className="flex-1 min-w-0 relative z-10">
-                  <h3 className="text-2xl lg:text-3xl font-black mb-3 group-hover:text-pink-600 transition-colors duration-300 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">
-                    {exp.role}
-                  </h3>
-                  <p className="text-xl font-bold text-gray-800 mb-1">{exp.company}</p>
-                  <p className="text-lg text-teal-600 font-semibold mb-6 tracking-wide">{exp.time}</p>
-                  <p className="text-lg leading-relaxed text-gray-700 mb-6 max-w-xl">{exp.desc}</p>
-                  
-                  <div className="space-y-2">
-                    {exp.achievements.map((achievement, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3 bg-gradient-to-r from-pink-500/5 to-teal-500/5 rounded-xl border-l-3 border-teal-500 group-hover:border-pink-500 transition-all">
-                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-pink-500 to-teal-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-base font-semibold text-gray-800">{achievement}</span>
-                      </div>
+                <div className={`absolute left-0 w-2 h-full bg-gradient-to-b ${exp.color} rounded-full`} />
+                <div className={`text-4xl p-4 bg-gradient-to-br ${exp.color} text-white rounded-2xl shadow-xl group-hover:scale-110 transition-all flex-shrink-0`}>
+                  {i === 0 ? "🚀" : i === 1 ? "✈️" : "🔧"}
+                </div>
+                <div className="flex-1 space-y-4">
+                  <div>
+                    <h3 className="text-2xl lg:text-3xl font-black group-hover:text-rose-600 transition-colors">{exp.role}</h3>
+                    <p className="text-xl font-bold text-gray-800">{exp.company}</p>
+                    <p className="text-lg text-emerald-600 font-semibold mt-1">{exp.time}</p>
+                  </div>
+                  <p className="text-lg text-gray-700 leading-relaxed">{exp.desc}</p>
+                  <div className="flex flex-wrap gap-3">
+                    {exp.achievements.map((ach, idx) => (
+                      <span key={idx} className="px-4 py-2 bg-gradient-to-r from-rose-500/10 to-emerald-500/10 text-sm font-semibold text-gray-800 rounded-xl border border-rose-200/50">
+                        {ach}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -239,171 +276,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section - Optimized */}
-      <section id="skills" className="py-32 px-6 relative min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-50/50 to-teal-50/50 backdrop-blur-md" />
-        <div className="relative z-20 max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-center mb-24 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent drop-shadow-2xl"
-          >
-            Tech Stack Mastery
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Backend",
-                skills: ["Laravel", "PHP","Codeigniter","Node.js", "Next.js", "Python"],
-                color: "from-pink-500 to-teal-500",
-                icon: "⚙️"
-              },
-              {
-                title: "Frontend",
-                skills: ["React.js", "Next.js", "Vue.js", "Angular", "Tailwind CSS", "TypeScript"],
-                color: "from-teal-500 to-purple-500",
-                icon: "🎨"
-              },
-              {
-                title: "Database",
-                skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis"],
-                color: "from-purple-500 to-pink-500",
-                icon: "🗄️"
-              },
-              {
-                title: "DevOps & Tools",
-                skills: ["Git/GitHub", "VS Code", "Laravel Forge", "Vercel", "AWS"],
-                color: "from-orange-500 to-pink-500",
-                icon: "🔧"
-              }
-            ].map((group, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                whileHover={{ y: -20, scale: 1.05 }}
-                className={`group relative bg-gradient-to-br ${group.color}/10 to-white/80 p-10 rounded-3xl shadow-2xl border border-white/40 backdrop-blur-lg hover:shadow-4xl hover:scale-105 transition-all duration-500 overflow-hidden`}
-              >
-                <div className="text-4xl mb-6 relative z-10">{group.icon}</div>
-                <h3 className="text-2xl font-black mb-8 text-gray-900 drop-shadow-lg relative z-10">
-                  {group.title}
-                </h3>
-                <div className="space-y-3 relative z-10">
-                  {group.skills.map((skill, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ x: -20, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.05, duration: 0.4 }}
-                      whileHover={{ scale: 1.05, x: 8 }}
-                      className="group-hover:opacity-100 opacity-90 px-5 py-3 bg-white/50 backdrop-blur-md rounded-2xl text-gray-900 font-semibold text-base cursor-pointer transition-all duration-300 hover:bg-white/70 hover:shadow-xl border border-white/50"
-                    >
-                      {skill}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section - Optimized */}
-      <section id="projects" className="py-32 px-6 bg-gradient-to-br from-gray-50/95 via-white to-gray-50/90 relative min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto relative z-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-center mb-24 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent drop-shadow-2xl"
-          >
-            Featured Projects
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            {[
-              {
-                name: "Ogonn Platform",
-                desc: "Complete full-stack e-commerce ecosystem with advanced inventory management, multi-vendor support, and real-time order tracking",
-                tech: "Laravel 11 + Vue.js 3 + MySQL + Redis",
-                link: "#",
-                color: "from-pink-500 to-purple-500",
-                stats: ["10K+ Users", "50+ Vendors", "99.9% Uptime"]
-              },
-              {
-                name: "Wagnistrip",
-                desc: "Advanced travel booking platform with AI-powered recommendations, multi-gateway payments, and real-time flight/hotel availability",
-                tech: "Laravel + Stripe + PostgreSQL",
-                link: "#",
-                color: "from-teal-500 to-emerald-500",
-                stats: ["100K+ Transactions", "50+ Destinations", "Real-time APIs"]
-              },
-              {
-                name: "Zaadoo HRM",
-                desc: "Enterprise HR management system with employee onboarding, payroll automation, performance analytics, and compliance tracking",
-                tech: "Laravel + React + MySQL + AWS",
-                link: "#",
-                color: "from-purple-500 to-pink-500",
-                stats: ["5K+ Employees", "20+ Modules", "SaaS Ready"]
-              },
-              {
-                name: "Googly11",
-                desc: "Fantasy sports platform with live scoring, real-time leaderboards, wallet system, and multi-match contest management",
-                tech: "Laravel + Pusher + Vue.js + Redis",
-                link: "#",
-                color: "from-orange-500 to-red-500",
-                stats: ["50K+ Users", "Live Scoring", "WebSocket"]
-              }
-            ].map((project, i) => (
-              <motion.a
-                key={i}
-                href={project.link}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -20, scale: 1.03 }}
-                className={`group relative bg-gradient-to-br ${project.color}/10 to-white/90 p-12 rounded-3xl shadow-2xl hover:shadow-4xl border border-white/50 backdrop-blur-lg transition-all duration-500 overflow-hidden hover:-translate-y-4`}
-              >
-                <div className="relative z-20">
-                  <h3 className="text-3xl font-black mb-4 text-gray-900 drop-shadow-lg group-hover:scale-105 transition-all">
-                    {project.name}
-                  </h3>
-                  <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-md drop-shadow-sm">
-                    {project.desc}
-                  </p>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="px-4 py-2 bg-white/60 backdrop-blur-md rounded-2xl text-gray-900 font-bold text-sm border border-white/70">
-                      {project.tech}
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-3 mb-6">
-                    {project.stats.map((stat, idx) => (
-                      <div key={idx} className="text-center p-3 bg-white/50 backdrop-blur-md rounded-xl border border-white/60 group-hover:bg-white/70 transition-all">
-                        <div className="text-xl font-black text-gray-900 drop-shadow-sm">{stat}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-base font-semibold text-gray-800">View Project</span>
-                    <svg className="w-6 h-6 text-gray-700 group-hover:translate-x-2 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* services */}
+            {/* services */}
 
       <section id="services" className="py-32 px-6 relative min-h-screen flex items-center bg-gray-50/60">
   <div className="max-w-6xl mx-auto text-center relative z-20">
@@ -492,47 +365,148 @@ export default function Home() {
     </div>
 
   </div>
-</section>
+     </section>
 
-
-<section className="py-32 px-6 relative min-h-screen flex items-center bg-gradient-to-r from-pink-50/40 to-teal-50/40">
-  <div className="max-w-4xl mx-auto text-center relative z-20">
-
-    <h2 className="text-5xl md:text-6xl font-black mb-10">
-      Let’s Build Something Powerful
-    </h2>
-
-    <p className="text-xl text-gray-700 mb-12">
-      I am available for freelance work, full-time roles, and long-term collaborations.
-      Let’s discuss how I can help bring your ideas to life.
-    </p>
-
-    <a
-      href="mailto:farida.ansari786000@gmail.com"
-      className="inline-block bg-black text-white px-10 py-5 rounded-2xl text-lg font-bold hover:scale-105 transition-all"
-    >
-      Contact Me
-    </a>
-
-  </div>
-</section>
-
-
-      {/* Contact Section - Optimized */}
-      <section id="contact" className="py-32 px-6 relative min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-400/10 via-white/90 to-teal-400/10 backdrop-blur-lg" />
-        <div className="relative z-30 max-w-4xl mx-auto text-center">
+      {/* Skills - Modern Grid */}
+      <section id="skills" className="py-32 px-6 min-h-screen flex items-center relative bg-gradient-to-r from-slate-50 to-emerald-50/20">
+        <div className="max-w-7xl mx-auto">
           <motion.h2
-            initial={{ opacity: 0, scale: 0.9, y: 40 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black mb-16 bg-gradient-to-r from-pink-600 via-purple-600 to-teal-600 bg-clip-text text-transparent drop-shadow-2xl"
+            className="text-5xl lg:text-6xl font-black text-center mb-24 bg-gradient-to-r from-gray-900 to-emerald-700 bg-clip-text text-transparent"
           >
-            Let's Create Something Amazing Together
+            Tech Stack
           </motion.h2>
 
-          <motion.div
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Backend", skills: ["Laravel", "PHP 8.3", "CodeIgniter", "Node.js"], icon: "⚙️", color: "from-rose-500 to-emerald-500"
+              },
+              {
+                title: "Frontend", skills: ["React.js", "Next.js 15", "Vue.js", "TypeScript"], icon: "🎨", color: "from-emerald-500 to-purple-500"
+              },
+              {
+                title: "Database", skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis"], icon: "🗄️", color: "from-purple-500 to-rose-500"
+              },
+              {
+                title: "Tools", skills: ["Git/GitHub", "Docker", "AWS", "Vercel"], icon: "🔧", color: "from-orange-500 to-rose-500"
+              }
+            ].map((group, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -20, scale: 1.05 }}
+                transition={{ delay: i * 0.1 }}
+                className={`group p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 border border-white/50 backdrop-blur-xl bg-gradient-to-br ${group.color} from-20%`}
+              >
+                <div className="text-5xl mb-8 opacity-90">{group.icon}</div>
+                <h3 className="text-2xl font-black mb-8 text-white drop-shadow-lg">{group.title}</h3>
+                <div className="space-y-3">
+                  {group.skills.map((skill, idx) => (
+                    <div key={idx} className="px-6 py-3 bg-white/20 backdrop-blur-xl rounded-2xl text-white font-semibold hover:bg-white/40 hover:scale-105 transition-all cursor-pointer border border-white/30">
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects - Featured Grid */}
+      <section id="projects" className="py-32 px-6 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 min-h-screen">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl lg:text-6xl font-black text-center mb-24 bg-gradient-to-r from-gray-900 to-emerald-700 bg-clip-text text-transparent"
+          >
+            Featured Projects
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {[
+              {
+                name: "Ogonn Platform", desc: "Full-stack e-commerce with multi-vendor & real-time tracking", 
+                tech: "Laravel 11 • Vue.js • MySQL • Redis", stats: ["10K+ Users", "50+ Vendors", "99.9%"],
+                color: "from-rose-500 to-purple-500"
+              },
+              {
+                name: "Wagnistrip", desc: "Travel booking with AI recommendations & payments", 
+                tech: "Laravel • Stripe • PostgreSQL", stats: ["100K+ Transactions", "50+ Destinations", "Live APIs"],
+                color: "from-emerald-500 to-teal-500"
+              },
+              {
+                name: "Zaadoo HRM", desc: "Enterprise HR system with payroll & analytics", 
+                tech: "Laravel • React • AWS", stats: ["5K+ Employees", "20+ Modules", "SaaS"],
+                color: "from-purple-500 to-rose-500"
+              },
+              {
+                name: "Googly11", desc: "Fantasy sports with live scoring & wallets", 
+                tech: "Laravel • Pusher • Redis", stats: ["50K+ Users", "Live Scoring", "WebSocket"],
+                color: "from-orange-500 to-emerald-500"
+              }
+            ].map((project, i) => (
+              <motion.a
+                key={i}
+                href="#"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -20, scale: 1.02 }}
+                className={`group p-12 rounded-3xl shadow-2xl hover:shadow-4xl transition-all duration-700 border border-white/60 backdrop-blur-xl bg-gradient-to-br ${project.color} from-30% hover:-translate-y-6`}
+              >
+                <h3 className="text-3xl font-black mb-6 text-white drop-shadow-xl group-hover:scale-105">{project.name}</h3>
+                <p className="text-lg text-white/90 mb-8 leading-relaxed drop-shadow-md">{project.desc}</p>
+                <div className="flex gap-3 mb-8">
+                  <span className="px-4 py-2 bg-white/30 backdrop-blur-xl rounded-2xl text-white font-bold border border-white/50">
+                    {project.tech}
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                  {project.stats.map((stat, idx) => (
+                    <div key={idx} className="p-4 bg-white/20 backdrop-blur-xl rounded-2xl text-white font-bold text-center border border-white/40 group-hover:bg-white/40">
+                      {stat}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-3 text-white font-semibold">
+                  View Project → 
+                  <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+  id="contact"
+  className="py-32 px-6 min-h-screen flex items-center relative bg-gradient-to-br from-[#fff7ed] via-[#fef5e7] to-[#e6f3f7]"
+>
+  {/* soft animated bg */}
+  <div className="absolute inset-0 bg-gradient-to-r from-pink-400/10 via-teal-400/10 to-pink-400/10 blur-3xl opacity-40" />
+
+  <div className="max-w-5xl mx-auto text-center relative z-10">
+
+    {/* Heading */}
+    <motion.h2
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-5xl lg:text-7xl font-black mb-12 bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 bg-clip-text text-transparent"
+    >
+      Let's Build Together
+    </motion.h2>
+
+    <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -579,8 +553,8 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             </motion.a>
           </motion.div>
-        </div>
-      </section>
+  </div>
+</section>
     </main>
   );
 }
