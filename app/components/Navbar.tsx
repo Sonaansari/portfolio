@@ -16,7 +16,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-2 h-[72px]">
-        {/* LOGO */}
+      
         <div className="flex items-center">
           <Image
             src="/logo.png"
@@ -28,7 +28,7 @@ export default function Navbar() {
           />
         </div>
 
-        {/* MOBILE BUTTON */}
+    
         <div className="md:hidden">
           <button className="p-2 rounded-xl hover:bg-gray-100 transition-colors">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* LINKS */}
+  
         <div className="hidden md:flex gap-8 text-base font-semibold text-gray-700 items-center">
           {["home", "about", "experience", "skills", "projects", "contact"].map((item) => (
             <motion.span
@@ -59,4 +59,5 @@ export default function Navbar() {
       </div>
     </motion.nav>
   );
+
 }
